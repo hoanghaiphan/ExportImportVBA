@@ -27,6 +27,7 @@ Dim Path As String
 
     WkBkName = GetExcelFilePathAndName("Select the Workbook Containing the VBA Code You Wish to Export", _
         "Excel Macro-Enabled Workbook(*.xlsm), *.xlsm")
+    If WkBkName = "" Then Exit Sub
     
     ''' NOTE: This workbook must be open in Excel.
     On Error Resume Next
@@ -113,6 +114,7 @@ Dim wkbSource As Workbook
 
     ''' NOTE: This workbook must be open in Excel.
     szSourceWorkbook = GetFileName(ActiveWorkbook.Name)
+    If szSourceWorkbook = "" Then Exit Sub
     On Error Resume Next
     Set wkbSource = Application.Workbooks(szSourceWorkbook)
     If Err.Number <> 0 Then
@@ -133,6 +135,7 @@ Dim wkbSource As Workbook
 
     'Get the path to the folder with modules
     Path = GetFolder("Select the Folder Containing the VBA Code You Want to Import")
+    If Path = "" Then Exit Sub
     If FolderWithVBAProjectFiles(Path) = "Error" Then
         MsgBox "Import Folder not exist"
         Exit Sub
