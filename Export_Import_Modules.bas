@@ -38,6 +38,7 @@ Dim Path As String
     On Error GoTo 0
     
     Path = GetFolder("Select the Folder to Place the VBA Code")
+    If Path = "" Then Exit Sub
 
     If FolderWithVBAProjectFiles(Path) = "Error" Then
         MsgBox "Export Folder not exist"
